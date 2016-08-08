@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<HTML>
+    <head>
+        <TITLE> Talk like Yoda </TITLE> 
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script>
+    window.onload = function()
+    {
+        $('#btntraducir').on('click', translateText);
+    }
+    function translateText()
+        {
+            var textoatraducir = $("#textoatraducir").val();
+            var url = "https://yoda.p.mashape.com/yoda?sentence=" +
+textoatraducir;
+            $.ajax({url:url,
+                   headers: {"X-Mashape-Key":
+                           "VkC98gOU36mshFpT1xVrtZ8ek7ADp1F9UxIjsnZxPtwaE5nHDq"},
+                   success: function(result){
+                       $("#resultado").html(result);
+                   }});
+        }
+    </script>
+        
+        <style>
+            h1 {
+                font-family: arial;
+            }
+            textarea {
+                width: 400px;
+                height: 100px;
+                background-color: #eeeeee;
+            }
+            label {
+                font-family: arial, verdana, sans-serif;
+            } 
+            button {
+                width: 400px;
+                background-color: bisque;
+                font-weight: bold;
+            }
+            #traductor 
+            { 
+                border: 1px solid back;
+                padding; 10px;
+                background-color: #00aa00;
+                width: 420px;
+            }
+            #resultado
+            { 
+            margin-top: 20px;
+            border: 1px solid black;
+            background-color: darkmagenta;
+            height: 50px;
+            }
+        </style>
+    </head>
+    <BODY>
+    
+        <H1> hablar como yoda.. </H1>
+        <div id="traductor">
+            <label for="textoatraducir"> Texto a traducir
+            </label><br/>
+            <textarea id="textoatraducir"> </textarea><br/>
+            <button id="btntraducir"> Traducir texto al modo yoda</button>
+        
+        <div id="resultado"></div>
+        </div>
+        
+    </bODY>
+</HTML>
